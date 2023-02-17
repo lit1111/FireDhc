@@ -4,6 +4,14 @@ if syn then
     
 end
 
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "🔥FireAltControl🔥", -- Required
+	Text = "LOADED", -- Required
+})
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "🔥FireAltControl🔥", -- Required
+	Text = "discord.gg/firedhc for any questions!", -- Required
+})
 
 local plr = game:GetService('Players')
 local TeleportService = game:GetService('TeleportService')
